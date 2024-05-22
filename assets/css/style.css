@@ -32,6 +32,11 @@ h5,
 h6 {
   font-family: "Jost", sans-serif;
 }
+/* custom-header */
+.custom-header{
+  font-size:medium;
+  color:#ffffff;
+}
 
 /*--------------------------------------------------------------
 # Preloader
