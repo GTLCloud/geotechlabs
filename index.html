@@ -731,6 +731,14 @@
   <script src="contact-script.js"></script>
 <!--  hidden booking form script-->
 <script>
+   // Check if the popup has already been shown during this visit
+    if (!document.cookie.includes("popupShown=true")) {
+        // If not shown, show the popup after 5 seconds
+        setTimeout(showPopup, 5000);
+        // Set a cookie to track that the popup has been shown
+        document.cookie = "popupShown=true; max-age=86400"; // Cookie expires in 24 hours (86400 seconds)
+    }
+
     // Define the showPopup() function
     function showPopup() {
         document.getElementById('popupForm').classList.add('active');
