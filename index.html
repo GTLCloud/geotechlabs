@@ -29,12 +29,86 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
   .custom-header{
     color:#ffffff;
     font-size:30px;
     
   }
+/*   booking form styles */
+  /* Styles for the popup */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f0f5f9; /* light blue background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            display: none;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }
+        .popup.active {
+            display: block;
+        }
+        .close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .popup h2 {
+            color: #007bff; /* blue title color */
+            margin-bottom: 20px;
+        }
+        /* Additional styles for form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-group textarea {
+            height: 100px;
+        }
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            appearance: none;
+        }
+        .form-group .required {
+            color: red;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        /* Hide scrollbar */
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+/*   end */
 </style>
 </head>
 
@@ -92,7 +166,7 @@
            We provide solutions centered on Machine Learning, Artificial Intelligence and Spatial Analysis.
           </h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a onclick="showPopup() href="#about" class="btn-get-started scrollto">Get Started</a>
             
           </div>
         </div>
@@ -105,7 +179,51 @@
   </section><!-- End Hero -->
 
   <main id="main">
+<!-- booking form hidden -->
+    <!-- Popup Form -->
+<div class="popup" id="popupForm">
+    <span class="close-icon" onclick="closePopup()"><i class="fas fa-times"></i></span>
+    <h2>Book an Introductory Call with Us</h2>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="firstName">First Name<span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name<span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email<span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="contactNo">Contact No<span class="required">*</span></label>
+            <input type="tel" id="contactNo" name="contactNo" required>
+        </div>
+        <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company">
+        </div>
+        <div class="form-group">
+            <label for="category">Category<span class="required">*</span></label>
+            <select id="category" name="category" required>
+                <option value="">Select Category</option>
+                <option value="Machine learning">Machine Learning</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="GIS">GIS</option>
+                <option value="General">General</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="message">What can we help you with?<span class="required">*</span></label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
 
+<!--     end -->
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients section-bg">
       <div class="container">
@@ -609,7 +727,16 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="contact-script.js"></script>
-
+<!--  hidden booking form script-->
+  <script>
+    function showPopup() {
+        document.getElementById('popupForm').classList.add('active');
+    }
+    
+    function closePopup() {
+        document.getElementById('popupForm').classList.remove('active');
+    }
+</script>
 </body>
 
 </html>
